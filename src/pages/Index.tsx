@@ -326,9 +326,12 @@ export default function Index() {
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <Icon name="Phone" size={24} className="text-primary" />
               </div>
-              <div className="font-semibold mb-1">Телефон</div>
-              <a href="tel:+79940645474" className="text-muted-foreground hover:text-primary transition-colors">
+              <div className="font-semibold mb-1">Телефоны</div>
+              <a href="tel:+79940645474" className="text-muted-foreground hover:text-primary transition-colors block">
                 +7 (994) 064-54-74
+              </a>
+              <a href="tel:446070" className="text-muted-foreground hover:text-primary transition-colors block mt-1">
+                446070
               </a>
             </div>
             <div>
