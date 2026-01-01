@@ -1,14 +1,23 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://otogrev.stramilov82mail.ru/sitemap.xml
+
+# Яндекс
+User-agent: Yandex
+Allow: /
+
+# Google
 User-agent: Googlebot
 Allow: /
 
+# Bing
 User-agent: Bingbot
 Allow: /
 
+# Социальные сети
 User-agent: Twitterbot
 Allow: /
 
 User-agent: facebookexternalhit
-Allow: /
-
-User-agent: *
 Allow: /
