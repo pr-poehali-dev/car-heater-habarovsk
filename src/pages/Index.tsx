@@ -4,6 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import { useToast } from '@/hooks/use-toast';
 
 const services = [
   {
@@ -61,6 +62,7 @@ const districts = [
 ];
 
 export default function Index() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -72,7 +74,29 @@ export default function Index() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.name || !formData.phone) {
+      toast({
+        title: "Ошибка",
+        description: "Пожалуйста, заполните имя и телефон",
+        variant: "destructive"
+      });
+      return;
+    }
+    
     console.log('Form submitted:', formData);
+    
+    toast({
+      title: "Заявка отправлена! ✅",
+      description: "Мы свяжемся с вами в течение 5 минут",
+    });
+    
+    setFormData({
+      name: '',
+      phone: '',
+      address: '',
+      message: ''
+    });
   };
 
   return (
