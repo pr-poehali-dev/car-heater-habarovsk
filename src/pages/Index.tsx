@@ -89,16 +89,26 @@ export default function Index() {
             <a href="#contacts" className="text-muted-foreground hover:text-primary transition-colors">Контакты</a>
           </div>
           <div className="flex items-center gap-2">
+            <a href="https://wa.me/79940645474" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="icon" className="bg-[#25D366] hover:bg-[#20BA5A] text-white border-0">
+                <Icon name="MessageCircle" size={18} />
+              </Button>
+            </a>
+            <a href="https://t.me/+79940645474" target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="icon" className="bg-[#0088cc] hover:bg-[#0077b5] text-white border-0">
+                <Icon name="Send" size={18} />
+              </Button>
+            </a>
             <a href="tel:+79940645474">
               <Button className="gap-2">
                 <Icon name="Phone" size={18} />
                 <span className="hidden md:inline">+7 (994) 064-54-74</span>
               </Button>
             </a>
-            <a href="tel:446070">
+            <a href="tel:446070" className="hidden lg:block">
               <Button variant="outline" className="gap-2">
                 <Icon name="Phone" size={18} />
-                <span className="hidden md:inline">446070</span>
+                <span>446070</span>
               </Button>
             </a>
           </div>
@@ -329,7 +339,7 @@ export default function Index() {
               </form>
             </CardContent>
           </Card>
-          <div className="mt-12 grid md:grid-cols-3 gap-8 text-center">
+          <div className="mt-12 grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                 <Icon name="Phone" size={24} className="text-primary" />
@@ -340,6 +350,24 @@ export default function Index() {
               </a>
               <a href="tel:446070" className="text-muted-foreground hover:text-primary transition-colors block mt-1">
                 446070
+              </a>
+            </div>
+            <div>
+              <div className="w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center mx-auto mb-4">
+                <Icon name="MessageCircle" size={24} className="text-white" />
+              </div>
+              <div className="font-semibold mb-1">WhatsApp</div>
+              <a href="https://wa.me/79940645474" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                Написать
+              </a>
+            </div>
+            <div>
+              <div className="w-14 h-14 rounded-full bg-[#0088cc] flex items-center justify-center mx-auto mb-4">
+                <Icon name="Send" size={24} className="text-white" />
+              </div>
+              <div className="font-semibold mb-1">Telegram</div>
+              <a href="https://t.me/+79940645474" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+                Написать
               </a>
             </div>
             <div>
