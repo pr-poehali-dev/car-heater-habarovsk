@@ -88,12 +88,20 @@ export default function Index() {
             <a href="#map" className="text-muted-foreground hover:text-primary transition-colors">Зоны</a>
             <a href="#contacts" className="text-muted-foreground hover:text-primary transition-colors">Контакты</a>
           </div>
-          <a href="tel:+79940645474">
-            <Button className="gap-2">
-              <Icon name="Phone" size={18} />
-              <span className="hidden md:inline">+7 (994) 064-54-74</span>
-            </Button>
-          </a>
+          <div className="flex items-center gap-2">
+            <a href="tel:+79940645474">
+              <Button className="gap-2">
+                <Icon name="Phone" size={18} />
+                <span className="hidden md:inline">+7 (994) 064-54-74</span>
+              </Button>
+            </a>
+            <a href="tel:446070">
+              <Button variant="outline" className="gap-2">
+                <Icon name="Phone" size={18} />
+                <span className="hidden md:inline">446070</span>
+              </Button>
+            </a>
+          </div>
         </div>
       </nav>
 
