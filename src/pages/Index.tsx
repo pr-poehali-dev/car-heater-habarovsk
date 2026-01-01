@@ -67,6 +67,8 @@ export default function Index() {
     address: '',
     message: ''
   });
+  
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -89,6 +91,14 @@ export default function Index() {
             <a href="#contacts" className="text-muted-foreground hover:text-primary transition-colors">Контакты</a>
           </div>
           <div className="flex items-center gap-2">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              className="md:hidden"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <Icon name={mobileMenuOpen ? "X" : "Menu"} size={24} />
+            </Button>
             <a href="https://wa.me/79940645474" target="_blank" rel="noopener noreferrer">
               <Button variant="outline" size="icon" className="bg-[#25D366] hover:bg-[#20BA5A] text-white border-0">
                 <Icon name="MessageCircle" size={18} />
@@ -113,6 +123,56 @@ export default function Index() {
             </a>
           </div>
         </div>
+        
+        {mobileMenuOpen && (
+          <div className="md:hidden border-t border-border bg-white animate-fade-in">
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
+              <a 
+                href="#services" 
+                className="text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Услуги
+              </a>
+              <a 
+                href="#prices" 
+                className="text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Цены
+              </a>
+              <a 
+                href="#portfolio" 
+                className="text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Портфолио
+              </a>
+              <a 
+                href="#map" 
+                className="text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Зоны обслуживания
+              </a>
+              <a 
+                href="#contacts" 
+                className="text-foreground hover:text-primary transition-colors py-2"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Контакты
+              </a>
+              <div className="flex items-center gap-2 pt-2 border-t border-border">
+                <a href="tel:446070" className="flex-1">
+                  <Button variant="outline" className="w-full gap-2">
+                    <Icon name="Phone" size={18} />
+                    446070
+                  </Button>
+                </a>
+              </div>
+            </div>
+          </div>
+        )}
       </nav>
 
       <section className="pt-32 pb-20 px-4">
