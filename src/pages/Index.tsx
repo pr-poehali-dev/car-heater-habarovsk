@@ -393,6 +393,37 @@ export default function Index() {
           <p>&copy; 2026 Отогрев Авто Хабаровск. Все права защищены.</p>
         </div>
       </footer>
+
+      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
+        <a 
+          href="https://wa.me/79940645474" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="group"
+        >
+          <div className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
+            <Icon name="MessageCircle" size={26} className="text-white" />
+          </div>
+        </a>
+        <a 
+          href="https://t.me/+79940645474" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="group"
+        >
+          <div className="w-14 h-14 rounded-full bg-[#0088cc] hover:bg-[#0077b5] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
+            <Icon name="Send" size={26} className="text-white" />
+          </div>
+        </a>
+        <a 
+          href="tel:+79940645474"
+          className="group"
+        >
+          <div className="w-14 h-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
+            <Icon name="Phone" size={26} className="text-white" />
+          </div>
+        </a>
+      </div>
     </div>
   );
 }
