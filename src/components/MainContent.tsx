@@ -37,22 +37,32 @@ const services = [
 
 const portfolio = [
   {
-    title: 'Toyota Camry',
+    title: 'УАЗ Буханка',
+    temp: '-38°C',
+    time: '30 минут',
+    location: 'Центральный р-н',
+    image: 'https://cdn.poehali.dev/files/IMG_20241216_123153.jpg'
+  },
+  {
+    title: 'Грузовик FAW',
+    temp: '-42°C',
+    time: '40 минут',
+    location: 'Индустриальный р-н',
+    image: 'https://cdn.poehali.dev/files/IMG_20251212_082640.jpg'
+  },
+  {
+    title: 'Легковой автомобиль',
     temp: '-35°C',
     time: '25 минут',
-    location: 'ул. Ленина'
+    location: 'Железнодорожный р-н',
+    image: 'https://cdn.poehali.dev/files/IMG_20241219_161244.jpg'
   },
   {
-    title: 'Hyundai Solaris',
+    title: 'Грузовик Mitsubishi',
     temp: '-40°C',
-    time: '30 минут',
-    location: 'Индустриальный р-н'
-  },
-  {
-    title: 'Mazda CX-5',
-    temp: '-38°C',
-    time: '20 минут',
-    location: 'Железнодорожный р-н'
+    time: '35 минут',
+    location: 'Краснофлотский р-н',
+    image: 'https://cdn.poehali.dev/files/IMG_20241223_100133.jpg'
   }
 ];
 
@@ -185,11 +195,15 @@ export default function MainContent() {
               Примеры успешных отогревов в экстремальных условиях
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {portfolio.map((item, index) => (
-              <Card key={index} className="hover:shadow-lg transition-shadow">
-                <div className="h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                  <Icon name="Car" size={64} className="text-primary/40" />
+              <Card key={index} className="hover:shadow-lg transition-shadow overflow-hidden">
+                <div className="h-48 overflow-hidden">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <CardHeader>
                   <CardTitle className="text-xl">{item.title}</CardTitle>

@@ -45,8 +45,8 @@ export default function HeroSection() {
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl blur-3xl"></div>
               <img 
-                src="/placeholder.svg" 
-                alt="Отогрев автомобиля" 
+                src="https://cdn.poehali.dev/files/IMG_20241230_135322.jpg" 
+                alt="Отогрев автомобиля в Хабаровске" 
                 className="relative rounded-3xl shadow-2xl w-full h-[500px] object-cover"
               />
             </div>
