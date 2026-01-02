@@ -182,13 +182,15 @@ export default function MainContent() {
               </Card>
             </div>
             <div className="relative h-[500px] rounded-2xl overflow-hidden shadow-xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/40 to-accent/20 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <Icon name="Map" size={64} className="mx-auto mb-4 opacity-90" />
-                  <p className="text-lg font-medium">Интерактивная карта зон обслуживания</p>
-                  <p className="text-sm mt-2 opacity-90">Визуализация районов Хабаровска</p>
-                </div>
-              </div>
+              <iframe 
+                src="https://yandex.ru/map-widget/v1/?ll=135.071917%2C48.480223&mode=search&oid=1150172086&ol=biz&z=12"
+                width="100%" 
+                height="100%" 
+                frameBorder="0"
+                allowFullScreen
+                style={{ position: 'relative' }}
+                title="Карта Хабаровска"
+              ></iframe>
             </div>
           </div>
         </div>
