@@ -19,6 +19,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProp
           <a href="#prices" className="text-muted-foreground hover:text-primary transition-colors">Цены</a>
           <a href="#portfolio" className="text-muted-foreground hover:text-primary transition-colors">Портфолио</a>
           <a href="#map" className="text-muted-foreground hover:text-primary transition-colors">Зоны</a>
+          <a href="#faq" className="text-muted-foreground hover:text-primary transition-colors">Вопросы</a>
           <a href="#contacts" className="text-muted-foreground hover:text-primary transition-colors">Контакты</a>
         </div>
         <div className="flex items-center gap-2">
@@ -85,6 +86,13 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProp
               onClick={() => setMobileMenuOpen(false)}
             >
               Зоны обслуживания
+            </a>
+            <a 
+              href="#faq" 
+              className="text-foreground hover:text-primary transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Вопросы
             </a>
             <a 
               href="#contacts" 

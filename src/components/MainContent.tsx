@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Icon from '@/components/ui/icon';
 
@@ -54,6 +55,33 @@ const districts = [
   { name: 'Железнодорожный', time: '20-25 мин' },
   { name: 'Индустриальный', time: '25-30 мин' },
   { name: 'Краснофлотский', time: '20-30 мин' }
+];
+
+const faqItems = [
+  {
+    question: 'Сколько времени занимает отогрев автомобиля?',
+    answer: 'В среднем отогрев двигателя занимает от 15 до 30 минут в зависимости от температуры воздуха и состояния автомобиля. При температуре -35°C стандартный отогрев займёт около 20-25 минут.'
+  },
+  {
+    question: 'В какую погоду вы работаете?',
+    answer: 'Мы работаем в любую погоду, даже при температуре до -45°C. Используем профессиональное оборудование, которое эффективно работает в экстремальных условиях хабаровских морозов.'
+  },
+  {
+    question: 'Сколько стоит вызов мастера для отогрева?',
+    answer: 'Базовый тариф на отогрев двигателя начинается от 600₽. Экспресс-отогрев стоит от 800₽, полный отогрев всех систем — от 1500₽. Выезд в пределах города включён в стоимость.'
+  },
+  {
+    question: 'Как быстро вы приедете?',
+    answer: 'Среднее время приезда по Хабаровску составляет 15-30 минут. В Центральном районе приедем за 15-20 минут, в отдалённые районы — за 25-30 минут. Работаем круглосуточно без выходных.'
+  },
+  {
+    question: 'Безопасно ли отогревать машину в мороз?',
+    answer: 'Да, профессиональный отогрев полностью безопасен для автомобиля. Мы используем специализированное оборудование и следуем технологии постепенного прогрева, что исключает повреждение двигателя и электроники.'
+  },
+  {
+    question: 'Какие районы Хабаровска вы обслуживаете?',
+    answer: 'Мы работаем во всех районах Хабаровска: Центральный, Железнодорожный, Индустриальный и Краснофлотский. Также выезжаем в пригород и за пределы города по договорённости.'
+  }
 ];
 
 export default function MainContent() {
@@ -177,6 +205,49 @@ export default function MainContent() {
           </div>
         </div>
       </section>
+
+      <section id="faq" className="py-20 px-4">
+        <div className="container mx-auto max-w-4xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-foreground mb-4">Частые вопросы</h2>
+            <p className="text-lg text-muted-foreground">
+              Ответы на популярные вопросы об отогреве автомобилей в Хабаровске
+            </p>
+          </div>
+          <div className="space-y-4">
+            {faqItems.map((item, index) => (
+              <FAQItem key={index} question={item.question} answer={item.answer} />
+            ))}
+          </div>
+        </div>
+      </section>
     </>
+  );
+}
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <Card className="hover:shadow-md transition-shadow">
+      <CardHeader 
+        className="cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <div className="flex items-center justify-between">
+          <CardTitle className="text-lg pr-4">{question}</CardTitle>
+          <Icon 
+            name={isOpen ? "ChevronUp" : "ChevronDown"} 
+            size={24} 
+            className="text-primary flex-shrink-0"
+          />
+        </div>
+      </CardHeader>
+      {isOpen && (
+        <CardContent className="pt-0">
+          <p className="text-muted-foreground leading-relaxed">{answer}</p>
+        </CardContent>
+      )}
+    </Card>
   );
 }
