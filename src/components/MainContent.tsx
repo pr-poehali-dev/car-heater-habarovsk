@@ -63,6 +63,13 @@ const portfolio = [
     time: '35 минут',
     location: 'Краснофлотский р-н',
     image: 'https://cdn.poehali.dev/files/IMG_20241223_100133.jpg'
+  },
+  {
+    title: 'Грузовик Mercedes Actros',
+    temp: '-38°C',
+    time: '45 минут',
+    location: 'Железнодорожный р-н',
+    image: 'https://cdn.poehali.dev/files/IMG-20230122-WA0047.jpeg'
   }
 ];
 
