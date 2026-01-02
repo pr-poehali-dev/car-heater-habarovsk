@@ -80,6 +80,37 @@ const districts = [
   { name: 'Краснофлотский', time: '20-30 мин' }
 ];
 
+const reviews = [
+  {
+    name: 'Сергей М.',
+    rating: 5,
+    date: 'Декабрь 2024',
+    text: 'Отличный сервис! При -38°C машина встала намертво. Ребята приехали через 20 минут, отогрели быстро и профессионально. Цена адекватная.',
+    avatar: 'S'
+  },
+  {
+    name: 'Андрей К.',
+    rating: 5,
+    date: 'Январь 2025',
+    text: 'Прикурили грузовик FAW в мороз -42°C. Все сделали быстро, аккуратно, без последствий для техники. Рекомендую!',
+    avatar: 'А'
+  },
+  {
+    name: 'Елена Т.',
+    rating: 5,
+    date: 'Декабрь 2024',
+    text: 'Вызывала ночью, приехали за 25 минут в Железнодорожный район. Мастер вежливый, все объяснил. Машина завелась. Спасибо!',
+    avatar: 'Е'
+  },
+  {
+    name: 'Виктор П.',
+    rating: 5,
+    date: 'Ноябрь 2024',
+    text: 'Работают действительно круглосуточно. Застрял в 3 часа ночи в Индустриальном районе. Приехали, помогли. Молодцы, так держать!',
+    avatar: 'В'
+  }
+];
+
 const faqItems = [
   {
     question: 'Сколько времени занимает отогрев автомобиля?',
@@ -239,7 +270,65 @@ export default function MainContent() {
         </div>
       </section>
 
-      <section id="faq" className="py-20 px-4">
+      <section id="reviews" className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-foreground mb-4">Отзывы клиентов</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Реальные отзывы людей, которым мы помогли в мороз
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {reviews.map((review, index) => (
+              <Card key={index} className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-lg">
+                        {review.avatar}
+                      </div>
+                      <div>
+                        <CardTitle className="text-lg">{review.name}</CardTitle>
+                        <div className="flex items-center gap-2 mt-1">
+                          <div className="flex">
+                            {[...Array(review.rating)].map((_, i) => (
+                              <Icon key={i} name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
+                            ))}
+                          </div>
+                          <span className="text-sm text-muted-foreground">{review.date}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground leading-relaxed">{review.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <Card className="bg-primary/5 border-primary/20 inline-block">
+              <CardContent className="pt-6">
+                <p className="text-muted-foreground mb-4">
+                  Оставьте отзыв на Яндекс.Картах и помогите другим водителям найти надёжный сервис!
+                </p>
+                <a 
+                  href="https://yandex.ru/maps/org/1150172086/reviews"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors font-medium"
+                >
+                  <Icon name="ExternalLink" size={18} />
+                  Оставить отзыв на Яндекс.Картах
+                </a>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="py-20 px-4 bg-secondary/30">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-foreground mb-4">Частые вопросы</h2>

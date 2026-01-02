@@ -18,6 +18,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProp
           <a href="#services" className="text-muted-foreground hover:text-primary transition-colors">Услуги</a>
           <a href="#prices" className="text-muted-foreground hover:text-primary transition-colors">Цены</a>
           <a href="#portfolio" className="text-muted-foreground hover:text-primary transition-colors">Портфолио</a>
+          <a href="#reviews" className="text-muted-foreground hover:text-primary transition-colors">Отзывы</a>
           <a href="#map" className="text-muted-foreground hover:text-primary transition-colors">Зоны</a>
           <a href="#faq" className="text-muted-foreground hover:text-primary transition-colors">Вопросы</a>
           <a href="#contacts" className="text-muted-foreground hover:text-primary transition-colors">Контакты</a>
@@ -79,6 +80,13 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProp
               onClick={() => setMobileMenuOpen(false)}
             >
               Портфолио
+            </a>
+            <a 
+              href="#reviews" 
+              className="text-foreground hover:text-primary transition-colors py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Отзывы
             </a>
             <a 
               href="#map" 
