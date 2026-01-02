@@ -42,13 +42,28 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProp
               <Icon name="Send" size={18} />
             </Button>
           </a>
-          <a href="tel:+79940645474">
+          <a 
+            href="tel:+79940645474"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).ym) {
+                (window as any).ym(101026698, 'reachGoal', 'phone_header');
+              }
+            }}
+          >
             <Button className="gap-2">
               <Icon name="Phone" size={18} />
               <span className="hidden md:inline">+7 (994) 064-54-74</span>
             </Button>
           </a>
-          <a href="tel:446070" className="hidden lg:block">
+          <a 
+            href="tel:446070" 
+            className="hidden lg:block"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).ym) {
+                (window as any).ym(101026698, 'reachGoal', 'phone_header');
+              }
+            }}
+          >
             <Button variant="outline" className="gap-2">
               <Icon name="Phone" size={18} />
               <span>446070</span>

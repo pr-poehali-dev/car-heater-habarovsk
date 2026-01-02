@@ -27,6 +27,10 @@ export default function ContactSection() {
       return;
     }
     
+    if (typeof window !== 'undefined' && (window as any).ym) {
+      (window as any).ym(101026698, 'reachGoal', 'form_submit');
+    }
+    
     console.log('Form submitted:', formData);
     
     toast({
@@ -103,7 +107,15 @@ export default function ContactSection() {
                 <Icon name="Phone" size={24} className="text-primary" />
               </div>
               <div className="font-semibold mb-1">Телефоны</div>
-              <a href="tel:+79940645474" className="text-muted-foreground hover:text-primary transition-colors block">
+              <a 
+                href="tel:+79940645474" 
+                className="text-muted-foreground hover:text-primary transition-colors block"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).ym) {
+                    (window as any).ym(101026698, 'reachGoal', 'phone_click');
+                  }
+                }}
+              >
                 +7 (994) 064-54-74
               </a>
               <a href="tel:446070" className="text-muted-foreground hover:text-primary transition-colors block mt-1">
@@ -115,7 +127,17 @@ export default function ContactSection() {
                 <Icon name="MessageCircle" size={24} className="text-white" />
               </div>
               <div className="font-semibold mb-1">WhatsApp</div>
-              <a href="https://wa.me/79940645474" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a 
+                href="https://wa.me/79940645474" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).ym) {
+                    (window as any).ym(101026698, 'reachGoal', 'whatsapp_click');
+                  }
+                }}
+              >
                 Написать
               </a>
             </div>
@@ -124,7 +146,17 @@ export default function ContactSection() {
                 <Icon name="Send" size={24} className="text-white" />
               </div>
               <div className="font-semibold mb-1">Telegram</div>
-              <a href="https://t.me/+79940645474" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+              <a 
+                href="https://t.me/+79940645474" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-muted-foreground hover:text-primary transition-colors"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).ym) {
+                    (window as any).ym(101026698, 'reachGoal', 'telegram_click');
+                  }
+                }}
+              >
                 Написать
               </a>
             </div>
@@ -171,6 +203,11 @@ export default function ContactSection() {
           target="_blank" 
           rel="noopener noreferrer"
           className="group"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).ym) {
+              (window as any).ym(101026698, 'reachGoal', 'whatsapp_float');
+            }
+          }}
         >
           <div className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
             <Icon name="MessageCircle" size={26} className="text-white" />
@@ -181,6 +218,11 @@ export default function ContactSection() {
           target="_blank" 
           rel="noopener noreferrer"
           className="group"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).ym) {
+              (window as any).ym(101026698, 'reachGoal', 'telegram_float');
+            }
+          }}
         >
           <div className="w-14 h-14 rounded-full bg-[#0088cc] hover:bg-[#0077b5] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
             <Icon name="Send" size={26} className="text-white" />
@@ -189,6 +231,11 @@ export default function ContactSection() {
         <a 
           href="tel:+79940645474"
           className="group"
+          onClick={() => {
+            if (typeof window !== 'undefined' && (window as any).ym) {
+              (window as any).ym(101026698, 'reachGoal', 'phone_float');
+            }
+          }}
         >
           <div className="w-14 h-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
             <Icon name="Phone" size={26} className="text-white" />

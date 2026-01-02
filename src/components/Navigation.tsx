@@ -30,23 +30,56 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }: Naviga
           >
             <Icon name={mobileMenuOpen ? "X" : "Menu"} size={24} />
           </Button>
-          <a href="https://wa.me/79940645474" target="_blank" rel="noopener noreferrer">
+          <a 
+            href="https://wa.me/79940645474" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).ym) {
+                (window as any).ym(101026698, 'reachGoal', 'whatsapp_header');
+              }
+            }}
+          >
             <Button variant="outline" size="icon" className="bg-[#25D366] hover:bg-[#20BA5A] text-white border-0">
               <Icon name="MessageCircle" size={18} />
             </Button>
           </a>
-          <a href="https://t.me/+79940645474" target="_blank" rel="noopener noreferrer">
+          <a 
+            href="https://t.me/+79940645474" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).ym) {
+                (window as any).ym(101026698, 'reachGoal', 'telegram_header');
+              }
+            }}
+          >
             <Button variant="outline" size="icon" className="bg-[#0088cc] hover:bg-[#0077b5] text-white border-0">
               <Icon name="Send" size={18} />
             </Button>
           </a>
-          <a href="tel:+79940645474">
+          <a 
+            href="tel:+79940645474"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).ym) {
+                (window as any).ym(101026698, 'reachGoal', 'phone_header');
+              }
+            }}
+          >
             <Button className="gap-2">
               <Icon name="Phone" size={18} />
               <span className="hidden md:inline">+7 (994) 064-54-74</span>
             </Button>
           </a>
-          <a href="tel:446070" className="hidden lg:block">
+          <a 
+            href="tel:446070" 
+            className="hidden lg:block"
+            onClick={() => {
+              if (typeof window !== 'undefined' && (window as any).ym) {
+                (window as any).ym(101026698, 'reachGoal', 'phone_header');
+              }
+            }}
+          >
             <Button variant="outline" className="gap-2">
               <Icon name="Phone" size={18} />
               <span>446070</span>
@@ -94,7 +127,15 @@ export default function Navigation({ mobileMenuOpen, setMobileMenuOpen }: Naviga
               Контакты
             </a>
             <div className="flex items-center gap-2 pt-2 border-t border-border">
-              <a href="tel:446070" className="flex-1">
+              <a 
+                href="tel:446070" 
+                className="flex-1"
+                onClick={() => {
+                  if (typeof window !== 'undefined' && (window as any).ym) {
+                    (window as any).ym(101026698, 'reachGoal', 'phone_mobile');
+                  }
+                }}
+              >
                 <Button variant="outline" className="w-full gap-2">
                   <Icon name="Phone" size={18} />
                   446070
