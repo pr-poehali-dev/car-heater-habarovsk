@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import PhoneLink from '@/components/PhoneLink';
 
 interface HeaderProps {
   mobileMenuOpen: boolean;
@@ -42,19 +43,12 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProp
               <Icon name="Send" size={18} />
             </Button>
           </a>
-          <a 
-            href="tel:+79940645474"
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).ym) {
-                (window as any).ym(101026698, 'reachGoal', 'phone_header');
-              }
-            }}
-          >
+          <PhoneLink location="header_main">
             <Button className="gap-2">
               <Icon name="Phone" size={18} />
-              <span className="hidden md:inline">+7 (994) 064-54-74</span>
+              <PhoneLink location="header_main" className="hidden md:inline" />
             </Button>
-          </a>
+          </PhoneLink>
           <a 
             href="tel:446070" 
             className="hidden lg:block"

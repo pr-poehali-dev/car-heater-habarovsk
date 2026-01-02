@@ -5,6 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 import { useToast } from '@/hooks/use-toast';
+import PhoneLink from '@/components/PhoneLink';
 
 export default function ContactSection() {
   const { toast } = useToast();
@@ -107,17 +108,10 @@ export default function ContactSection() {
                 <Icon name="Phone" size={24} className="text-primary" />
               </div>
               <div className="font-semibold mb-1">Телефоны</div>
-              <a 
-                href="tel:+79940645474" 
+              <PhoneLink 
+                location="contacts_section"
                 className="text-muted-foreground hover:text-primary transition-colors block"
-                onClick={() => {
-                  if (typeof window !== 'undefined' && (window as any).ym) {
-                    (window as any).ym(101026698, 'reachGoal', 'phone_click');
-                  }
-                }}
-              >
-                +7 (994) 064-54-74
-              </a>
+              />
               <a href="tel:446070" className="text-muted-foreground hover:text-primary transition-colors block mt-1">
                 446070
               </a>
@@ -228,19 +222,11 @@ export default function ContactSection() {
             <Icon name="Send" size={26} className="text-white" />
           </div>
         </a>
-        <a 
-          href="tel:+79940645474"
-          className="group"
-          onClick={() => {
-            if (typeof window !== 'undefined' && (window as any).ym) {
-              (window as any).ym(101026698, 'reachGoal', 'phone_float');
-            }
-          }}
-        >
+        <PhoneLink location="floating_button" className="group">
           <div className="w-14 h-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
             <Icon name="Phone" size={26} className="text-white" />
           </div>
-        </a>
+        </PhoneLink>
       </div>
     </>
   );
