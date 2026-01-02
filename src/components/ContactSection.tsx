@@ -143,6 +143,19 @@ export default function ContactSection() {
               <div className="text-muted-foreground">Хабаровск, все районы</div>
             </div>
           </div>
+          <div className="mt-8 text-center">
+            <a 
+              href="https://yandex.ru/maps/?rtext=~48.480223,135.071917" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block"
+            >
+              <Button size="lg" variant="outline" className="gap-2">
+                <Icon name="Navigation" size={20} />
+                Построить маршрут на Яндекс.Картах
+              </Button>
+            </a>
+          </div>
         </div>
       </section>
 
