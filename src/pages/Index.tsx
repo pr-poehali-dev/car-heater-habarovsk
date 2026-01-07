@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import MainContent from '@/components/MainContent';
+import PriceCalculator from '@/components/PriceCalculator';
 import ContactSection from '@/components/ContactSection';
 
 export default function Index() {
@@ -12,6 +13,7 @@ export default function Index() {
       <Header mobileMenuOpen={mobileMenuOpen} setMobileMenuOpen={setMobileMenuOpen} />
       <HeroSection />
       <MainContent />
+      <PriceCalculator />
       <ContactSection />
     </div>
   );
