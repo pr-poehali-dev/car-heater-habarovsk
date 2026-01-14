@@ -16,16 +16,16 @@ const PriceCalculator = () => {
     // Тип авто
     switch (carType) {
       case 'sedan':
-        basePrice = 600;
+        basePrice = 3000;
         break;
       case 'crossover':
-        basePrice = 800;
+        basePrice = 3500;
         break;
       case 'minivan':
-        basePrice = 1000;
+        basePrice = 4000;
         break;
       case 'truck':
-        basePrice = 1500;
+        basePrice = 5000;
         break;
     }
 
@@ -35,10 +35,10 @@ const PriceCalculator = () => {
         basePrice += 0;
         break;
       case 'minus30':
-        basePrice += 200;
+        basePrice += 500;
         break;
       case 'minus40':
-        basePrice += 400;
+        basePrice += 1000;
         break;
     }
 
@@ -48,10 +48,10 @@ const PriceCalculator = () => {
         basePrice += 0;
         break;
       case 'near':
-        basePrice += 100;
+        basePrice += 300;
         break;
       case 'far':
-        basePrice += 300;
+        basePrice += 500;
         break;
     }
 
