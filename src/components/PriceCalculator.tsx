@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Calculator, Phone } from 'lucide-react';
 
 const PriceCalculator = () => {
+  const [serviceType, setServiceType] = useState('warming');
   const [carType, setCarType] = useState('sedan');
   const [temperature, setTemperature] = useState('minus20');
   const [district, setDistrict] = useState('center');
@@ -13,33 +14,52 @@ const PriceCalculator = () => {
   const calculatePrice = () => {
     let basePrice = 0;
 
-    // Тип авто
-    switch (carType) {
-      case 'sedan':
-        basePrice = 3000;
-        break;
-      case 'crossover':
-        basePrice = 3500;
-        break;
-      case 'minivan':
-        basePrice = 4000;
-        break;
-      case 'truck':
-        basePrice = 5000;
-        break;
+    // Тип услуги
+    if (serviceType === 'jumpstart') {
+      // Прикуривание 12-24В
+      switch (carType) {
+        case 'sedan':
+        case 'crossover':
+          basePrice = 1500;
+          break;
+        case 'minivan':
+          basePrice = 2000;
+          break;
+        case 'truck':
+          basePrice = 2500;
+          break;
+      }
+    } else {
+      // Отогрев
+      switch (carType) {
+        case 'sedan':
+          basePrice = 3000;
+          break;
+        case 'crossover':
+          basePrice = 3500;
+          break;
+        case 'minivan':
+          basePrice = 4000;
+          break;
+        case 'truck':
+          basePrice = 5000;
+          break;
+      }
     }
 
-    // Температура
-    switch (temperature) {
-      case 'minus20':
-        basePrice += 0;
-        break;
-      case 'minus30':
-        basePrice += 500;
-        break;
-      case 'minus40':
-        basePrice += 1000;
-        break;
+    // Температура (только для отогрева)
+    if (serviceType === 'warming') {
+      switch (temperature) {
+        case 'minus20':
+          basePrice += 0;
+          break;
+        case 'minus30':
+          basePrice += 500;
+          break;
+        case 'minus40':
+          basePrice += 1000;
+          break;
+      }
     }
 
     // Район
@@ -79,6 +99,25 @@ const PriceCalculator = () => {
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-8">
+            {/* Тип услуги */}
+            <div className="space-y-4">
+              <Label className="text-base font-semibold">Тип услуги</Label>
+              <RadioGroup value={serviceType} onValueChange={setServiceType} className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="flex items-center space-x-2 border rounded-lg p-4 cursor-pointer hover:bg-accent transition-colors">
+                  <RadioGroupItem value="warming" id="warming" />
+                  <Label htmlFor="warming" className="cursor-pointer flex-1">
+                    Отогрев автомобиля
+                  </Label>
+                </div>
+                <div className="flex items-center space-x-2 border rounded-lg p-4 cursor-pointer hover:bg-accent transition-colors">
+                  <RadioGroupItem value="jumpstart" id="jumpstart" />
+                  <Label htmlFor="jumpstart" className="cursor-pointer flex-1">
+                    Прикуривание 12-24В
+                  </Label>
+                </div>
+              </RadioGroup>
+            </div>
+
             {/* Тип автомобиля */}
             <div className="space-y-4">
               <Label className="text-base font-semibold">Тип автомобиля</Label>
@@ -110,7 +149,8 @@ const PriceCalculator = () => {
               </RadioGroup>
             </div>
 
-            {/* Температура */}
+            {/* Температура (только для отогрева) */}
+            {serviceType === 'warming' && (
             <div className="space-y-4">
               <Label className="text-base font-semibold">Температура на улице</Label>
               <RadioGroup value={temperature} onValueChange={setTemperature} className="grid grid-cols-1 md:grid-cols-3 gap-3">
@@ -134,6 +174,7 @@ const PriceCalculator = () => {
                 </div>
               </RadioGroup>
             </div>
+            )}
 
             {/* Район */}
             <div className="space-y-4">
@@ -163,7 +204,9 @@ const PriceCalculator = () => {
             {/* Результат */}
             <div className="border-t pt-6">
               <div className="bg-primary/10 rounded-lg p-6 text-center">
-                <p className="text-sm text-muted-foreground mb-2">Примерная стоимость отогрева:</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  {serviceType === 'warming' ? 'Примерная стоимость отогрева:' : 'Примерная стоимость прикуривания:'}
+                </p>
                 <p className="text-4xl md:text-5xl font-bold text-primary mb-4">{price} ₽</p>
                 <p className="text-xs text-muted-foreground mb-4">
                   Точная стоимость определяется после осмотра автомобиля
