@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import MainContent from '@/components/MainContent';
 import PriceCalculator from '@/components/PriceCalculator';
+import Reviews from '@/components/Reviews';
 import ContactSection from '@/components/ContactSection';
 
 export default function Index() {
@@ -14,6 +15,7 @@ export default function Index() {
       <HeroSection />
       <MainContent />
       <PriceCalculator />
+      <Reviews />
       <ContactSection />
     </div>
   );
