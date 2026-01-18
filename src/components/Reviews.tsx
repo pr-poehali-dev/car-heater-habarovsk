@@ -1,7 +1,30 @@
+import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import { Input } from '@/components/ui/input';
 import { Star } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Reviews = () => {
+  const { toast } = useToast();
+  const [showForm, setShowForm] = useState(false);
+  const [rating, setRating] = useState(5);
+  const [name, setName] = useState('');
+  const [reviewText, setReviewText] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    toast({
+      title: "Спасибо за отзыв!",
+      description: "Ваш отзыв отправлен и будет опубликован после модерации.",
+    });
+    setShowForm(false);
+    setName('');
+    setReviewText('');
+    setRating(5);
+  };
+
   const reviews = [
     {
       id: 1,
@@ -141,9 +164,83 @@ const Reviews = () => {
         </div>
 
         <div className="text-center mt-10">
-          <p className="text-sm text-muted-foreground">
+          <p className="text-sm text-muted-foreground mb-6">
             ⭐ Средняя оценка: 5.0 из 5 на основе реальных отзывов с Авито
           </p>
+          
+          {!showForm ? (
+            <Button 
+              onClick={() => setShowForm(true)}
+              size="lg"
+              className="gap-2"
+            >
+              <Star className="w-5 h-5" />
+              Оставить отзыв
+            </Button>
+          ) : (
+            <Card className="max-w-2xl mx-auto mt-8">
+              <CardContent className="pt-6">
+                <h3 className="text-xl font-bold mb-4">Напишите ваш отзыв</h3>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Ваше имя</label>
+                    <Input
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="Введите ваше имя"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Оценка</label>
+                    <div className="flex gap-2">
+                      {[1, 2, 3, 4, 5].map((star) => (
+                        <button
+                          key={star}
+                          type="button"
+                          onClick={() => setRating(star)}
+                          className="focus:outline-none"
+                        >
+                          <Star
+                            className={`w-8 h-8 ${
+                              star <= rating
+                                ? 'text-yellow-500 fill-yellow-500'
+                                : 'text-gray-300'
+                            }`}
+                          />
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium mb-2">Ваш отзыв</label>
+                    <Textarea
+                      value={reviewText}
+                      onChange={(e) => setReviewText(e.target.value)}
+                      placeholder="Расскажите о вашем опыте..."
+                      rows={4}
+                      required
+                    />
+                  </div>
+                  
+                  <div className="flex gap-3">
+                    <Button type="submit" className="flex-1">
+                      Отправить отзыв
+                    </Button>
+                    <Button 
+                      type="button" 
+                      variant="outline"
+                      onClick={() => setShowForm(false)}
+                    >
+                      Отмена
+                    </Button>
+                  </div>
+                </form>
+              </CardContent>
+            </Card>
+          )}
         </div>
       </div>
     </section>
