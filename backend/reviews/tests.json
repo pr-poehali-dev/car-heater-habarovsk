@@ -1,0 +1,27 @@
+{
+  "tests": [
+    {
+      "name": "Get approved reviews",
+      "method": "GET",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedBody": [],
+      "bodyMatcher": "type"
+    },
+    {
+      "name": "Submit new review",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "author": "Тестовый пользователь",
+        "rating": 5,
+        "text": "Отличный сервис!"
+      },
+      "expectedStatus": 201,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
