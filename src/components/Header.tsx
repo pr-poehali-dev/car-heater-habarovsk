@@ -9,7 +9,7 @@ interface HeaderProps {
 
 export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border">
+    <nav className="bg-white border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Icon name="Snowflake" size={28} className="text-primary" />
@@ -49,15 +49,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }: HeaderProp
               <PhoneLink location="header_main" className="hidden md:inline" />
             </Button>
           </PhoneLink>
-          <a 
-            href="tel:446070" 
-            className="hidden lg:block"
-            onClick={() => {
-              if (typeof window !== 'undefined' && (window as any).ym) {
-                (window as any).ym(101026698, 'reachGoal', 'phone_header');
-              }
-            }}
-          >
+          <a href="tel:446070" className="hidden lg:block">
             <Button variant="outline" className="gap-2">
               <Icon name="Phone" size={18} />
               <span>446070</span>
