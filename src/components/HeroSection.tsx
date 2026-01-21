@@ -20,9 +20,10 @@ export default function HeroSection() {
                   Вызвать мастера
                 </Button>
               </a>
-              <a href="#services">
-                <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                  Узнать больше
+              <a href="https://www.avito.ru/user/f931a85b0ae3c1b6e13a0d08a9e6ba1e/profile?src=sharing" target="_blank" rel="noopener noreferrer">
+                <Button size="lg" variant="outline" className="w-full sm:w-auto gap-2 bg-blue-600 hover:bg-blue-700 text-white border-blue-600">
+                  <Icon name="ExternalLink" size={20} />
+                  Авито (12+ отзывов)
                 </Button>
               </a>
             </div>
