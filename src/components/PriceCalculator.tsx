@@ -20,13 +20,13 @@ const PriceCalculator = () => {
       switch (carType) {
         case 'sedan':
         case 'crossover':
-          basePrice = 1500;
-          break;
-        case 'minivan':
           basePrice = 2000;
           break;
-        case 'truck':
+        case 'minivan':
           basePrice = 2500;
+          break;
+        case 'truck':
+          basePrice = 3000;
           break;
       }
     } else {
