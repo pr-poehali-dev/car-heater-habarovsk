@@ -1,0 +1,13 @@
+{
+  "tests": [
+    {
+      "name": "Get all contacts",
+      "method": "GET",
+      "expectedStatus": 200,
+      "expectedBody": {
+        "contacts": []
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

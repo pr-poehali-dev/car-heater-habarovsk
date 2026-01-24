@@ -16,7 +16,7 @@ export default function ContactSection() {
     message: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.phone) {
@@ -28,19 +28,43 @@ export default function ContactSection() {
       return;
     }
     
-    console.log('Form submitted:', formData);
-    
-    toast({
-      title: "Заявка отправлена! ✅",
-      description: "Мы свяжемся с вами в течение 5 минут",
-    });
-    
-    setFormData({
-      name: '',
-      phone: '',
-      address: '',
-      message: ''
-    });
+    try {
+      const response = await fetch('https://functions.poehali.dev/424c47d2-a478-49ce-8c56-5d0634e05205', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          message: `Адрес: ${formData.address}\n\n${formData.message}`
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        toast({
+          title: "Заявка отправлена! ✅",
+          description: "Мы свяжемся с вами в течение 5 минут",
+        });
+        
+        setFormData({
+          name: '',
+          phone: '',
+          address: '',
+          message: ''
+        });
+      } else {
+        throw new Error(data.error || 'Ошибка отправки');
+      }
+    } catch (error) {
+      toast({
+        title: "Ошибка",
+        description: "Не удалось отправить заявку. Попробуйте позже.",
+        variant: "destructive"
+      });
+    }
   };
 
   return (
