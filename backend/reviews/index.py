@@ -77,7 +77,7 @@ def handler(event: dict, context) -> dict:
             
             cur.execute('''
                 INSERT INTO reviews (author, rating, review_text, is_approved)
-                VALUES (%s, %s, %s, FALSE)
+                VALUES (%s, %s, %s, TRUE)
                 RETURNING id
             ''', (author, rating, review_text))
             review_id = cur.fetchone()[0]
@@ -86,7 +86,7 @@ def handler(event: dict, context) -> dict:
             return {
                 'statusCode': 201,
                 'headers': {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                'body': json.dumps({'success': True, 'id': review_id, 'message': 'Отзыв отправлен на модерацию'}, ensure_ascii=False)
+                'body': json.dumps({'success': True, 'id': review_id, 'message': 'Спасибо за отзыв!'}, ensure_ascii=False)
             }
         
         else:
