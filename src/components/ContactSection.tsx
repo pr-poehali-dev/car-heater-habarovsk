@@ -1,142 +1,18 @@
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
-import { useToast } from '@/hooks/use-toast';
 import PhoneLink from '@/components/PhoneLink';
 
 export default function ContactSection() {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    phone: '',
-    address: '',
-    message: ''
-  });
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!formData.name || !formData.phone) {
-      toast({
-        title: "Ошибка",
-        description: "Пожалуйста, заполните имя и телефон",
-        variant: "destructive"
-      });
-      return;
-    }
-    
-    try {
-      // Отправляем заявку в Telegram
-      const telegramResponse = await fetch('https://functions.poehali.dev/1daeb4f6-be9a-4410-a04f-2d06aadde3f3', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          message: `Адрес: ${formData.address}\n\n${formData.message}`
-        })
-      });
-
-      // Сохраняем в базу данных (старая функция)
-      const dbResponse = await fetch('https://functions.poehali.dev/424c47d2-a478-49ce-8c56-5d0634e05205', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          name: formData.name,
-          phone: formData.phone,
-          message: `Адрес: ${formData.address}\n\n${formData.message}`
-        })
-      });
-
-      const telegramData = await telegramResponse.json();
-      const dbData = await dbResponse.json();
-
-      if ((telegramResponse.ok && telegramData.success) || (dbResponse.ok && dbData.success)) {
-        toast({
-          title: "Заявка отправлена! ✅",
-          description: "Мы свяжемся с вами в течение 5 минут",
-        });
-        
-        setFormData({
-          name: '',
-          phone: '',
-          address: '',
-          message: ''
-        });
-      } else {
-        throw new Error('Ошибка отправки');
-      }
-    } catch (error) {
-      toast({
-        title: "Ошибка",
-        description: "Не удалось отправить заявку. Попробуйте позже.",
-        variant: "destructive"
-      });
-    }
-  };
-
   return (
     <>
       <section id="contacts" className="py-20 px-4">
         <div className="container mx-auto max-w-4xl">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">Оставить заявку</h2>
+            <h2 className="text-4xl font-bold text-foreground mb-4">Контакты</h2>
             <p className="text-lg text-muted-foreground">
-              Заполните форму, и мы свяжемся с вами в течение 5 минут
+              Свяжитесь с нами удобным способом
             </p>
           </div>
-          <Card className="shadow-xl">
-            <CardContent className="p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Ваше имя</label>
-                    <Input 
-                      placeholder="Иван Иванов"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Телефон</label>
-                    <Input 
-                      placeholder="+7 (999) 999-99-99"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                    />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Адрес</label>
-                  <Input 
-                    placeholder="Улица, дом"
-                    value={formData.address}
-                    onChange={(e) => setFormData({...formData, address: e.target.value})}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Комментарий</label>
-                  <Textarea 
-                    placeholder="Опишите проблему или дополнительную информацию"
-                    value={formData.message}
-                    onChange={(e) => setFormData({...formData, message: e.target.value})}
-                    rows={4}
-                  />
-                </div>
-                <Button type="submit" size="lg" className="w-full gap-2">
-                  <Icon name="Send" size={20} />
-                  Отправить заявку
-                </Button>
-              </form>
-            </CardContent>
-          </Card>
           <div className="mt-12 grid md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -215,34 +91,6 @@ export default function ContactSection() {
           <p>&copy; 2026 Отогрев Авто Хабаровск. Все права защищены.</p>
         </div>
       </footer>
-
-      <div className="fixed bottom-6 right-6 flex flex-col gap-3 z-50">
-        <a 
-          href="https://wa.me/79940645474" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="group"
-        >
-          <div className="w-14 h-14 rounded-full bg-[#25D366] hover:bg-[#20BA5A] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
-            <Icon name="MessageCircle" size={26} className="text-white" />
-          </div>
-        </a>
-        <a 
-          href="https://t.me/+79940645474" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="group"
-        >
-          <div className="w-14 h-14 rounded-full bg-[#0088cc] hover:bg-[#0077b5] shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
-            <Icon name="Send" size={26} className="text-white" />
-          </div>
-        </a>
-        <PhoneLink location="floating_button" className="group">
-          <div className="w-14 h-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 flex items-center justify-center hover:scale-110">
-            <Icon name="Phone" size={26} className="text-white" />
-          </div>
-        </PhoneLink>
-      </div>
     </>
   );
 }
