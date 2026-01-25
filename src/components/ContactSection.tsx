@@ -29,7 +29,8 @@ export default function ContactSection() {
     }
     
     try {
-      const response = await fetch('https://functions.poehali.dev/424c47d2-a478-49ce-8c56-5d0634e05205', {
+      // Отправляем заявку в Telegram
+      const telegramResponse = await fetch('https://functions.poehali.dev/1daeb4f6-be9a-4410-a04f-2d06aadde3f3', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -41,9 +42,23 @@ export default function ContactSection() {
         })
       });
 
-      const data = await response.json();
+      // Сохраняем в базу данных (старая функция)
+      const dbResponse = await fetch('https://functions.poehali.dev/424c47d2-a478-49ce-8c56-5d0634e05205', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          message: `Адрес: ${formData.address}\n\n${formData.message}`
+        })
+      });
 
-      if (response.ok && data.success) {
+      const telegramData = await telegramResponse.json();
+      const dbData = await dbResponse.json();
+
+      if ((telegramResponse.ok && telegramData.success) || (dbResponse.ok && dbData.success)) {
         toast({
           title: "Заявка отправлена! ✅",
           description: "Мы свяжемся с вами в течение 5 минут",
@@ -56,7 +71,7 @@ export default function ContactSection() {
           message: ''
         });
       } else {
-        throw new Error(data.error || 'Ошибка отправки');
+        throw new Error('Ошибка отправки');
       }
     } catch (error) {
       toast({
